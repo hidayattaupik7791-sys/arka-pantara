@@ -3,332 +3,65 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARKA PANTARA | Petualangan IPAS Kelas 4</title>
+
+<title>ARKA PANTARA</title>
+
 <style>
-:root{
-  --bg:#071a33; --panel:#0d2a4d; --panel2:#123b63; --blue:#27b7ff;
-  --green:#39d98a; --gold:#ffd45a; --red:#ff6b5f; --white:#f7fbff; --muted:#b8cee2;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+    text-align: center;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:
-radial-gradient(circle at 15% 10%,#174a73 0,transparent 28%),
-radial-gradient(circle at 90% 20%,#153f63 0,transparent 30%),var(--bg);
-color:var(--white);min-height:100vh}
-button{font:inherit}
-.screen{display:none;min-height:100vh;padding:28px}
-.screen.active{display:flex}
-.wrap{width:min(1100px,100%);margin:auto}
-.logo{font-size:clamp(36px,7vw,78px);font-weight:900;letter-spacing:3px;line-height:.95}
-.subtitle{font-size:clamp(18px,3vw,30px);color:var(--gold);font-weight:800;margin:12px 0}
-.credit{margin-top:30px;color:var(--muted);font-size:14px}
-.hero{text-align:center;align-items:center}
-.hero-card{background:linear-gradient(145deg,#0e3158cc,#06182ecc);border:1px solid #2b6b99;
-border-radius:30px;padding:48px 28px;box-shadow:0 20px 60px #0008}
-.tara{font-size:76px;margin-bottom:12px}
-.tagline{color:var(--muted);font-size:18px}
-.btn{border:0;border-radius:14px;padding:14px 22px;margin:7px;cursor:pointer;font-weight:800;
-background:linear-gradient(135deg,#27b7ff,#1777d2);color:#fff;box-shadow:0 7px 0 #0a4e91;transition:.15s}
-.btn:hover{transform:translateY(-2px)}
-.btn.gold{background:linear-gradient(135deg,#ffe27a,#f1a91d);color:#182033;box-shadow:0 7px 0 #9d6b0a}
-.btn.red{background:linear-gradient(135deg,#ff8a78,#df3d35);box-shadow:0 7px 0 #8f211d}
-.btn.green{background:linear-gradient(135deg,#58e6a1,#16a66a);box-shadow:0 7px 0 #087044}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
-.energy{background:#09213d;border:1px solid #27577d;border-radius:999px;padding:10px 15px;font-weight:900;color:var(--gold)}
-.panel{background:#0b2948e8;border:1px solid #2b648f;border-radius:24px;padding:24px;box-shadow:0 14px 35px #0005}
-h1,h2,h3{margin-top:0}
-.muted{color:var(--muted)}
-.map-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.mission{position:relative;min-height:150px;text-align:left;border:1px solid #2c6d97;border-radius:20px;
-padding:18px;background:linear-gradient(145deg,#123d64,#09233e);color:white;cursor:pointer}
-.mission:hover{transform:translateY(-3px);border-color:var(--blue)}
-.mission.locked{opacity:.5;cursor:not-allowed}
-.badge{font-size:30px}.mission small{color:var(--muted);display:block;margin-top:8px;line-height:1.35}
-.status{position:absolute;right:14px;top:14px;font-size:12px;color:var(--gold);font-weight:800}
-.brief{display:grid;grid-template-columns:160px 1fr;gap:24px;align-items:center}
-.avatar{background:linear-gradient(145deg,#173f65,#081c34);border-radius:25px;padding:25px;text-align:center;font-size:90px}
-.question-number{color:var(--gold);font-weight:900}
-.question{font-size:clamp(22px,3.4vw,34px);line-height:1.25;margin:16px 0 24px}
-.answers{display:grid;grid-template-columns:1fr 1fr;gap:13px}
-.answer{border:1px solid #3b759d;border-radius:16px;padding:18px;text-align:left;background:#10385c;color:#fff;
-cursor:pointer;font-weight:700;min-height:70px}
-.answer:hover{background:#174a73;border-color:var(--blue)}
-.feedback{text-align:center}
-.feedback-icon{font-size:72px}.feedback h2{font-size:42px;margin:8px 0}
-.explain{max-width:700px;margin:18px auto;color:var(--muted);font-size:18px;line-height:1.6}
-.progress{height:10px;background:#06172b;border-radius:99px;overflow:hidden;margin:15px 0 25px}
-.progress span{display:block;height:100%;background:linear-gradient(90deg,#27b7ff,#39d98a);width:0}
-.certificate{text-align:center;background:linear-gradient(145deg,#0d2e50,#07192e);border:2px solid #d7b84d;
-border-radius:28px;padding:45px 25px;box-shadow:0 0 50px #d7b84d22}
-.big-title{font-size:clamp(36px,7vw,70px);font-weight:900;color:var(--gold);letter-spacing:2px}
-.form{max-width:520px;margin:25px auto;text-align:left}.form label{display:block;margin:13px 0 7px;font-weight:800}
-.form input{width:100%;padding:14px;border-radius:12px;border:1px solid #47789c;background:#061b32;color:white}
-.footer{text-align:center;margin-top:30px;color:#87a8c2;font-size:12px}
-@media(max-width:800px){.map-grid{grid-template-columns:1fr 1fr}.brief{grid-template-columns:1fr}.avatar{font-size:60px}.answers{grid-template-columns:1fr}}
-@media(max-width:480px){.screen{padding:15px}.map-grid{grid-template-columns:1fr}.hero-card{padding:35px 18px}.panel{padding:18px}}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 45px;
+}
+
+p {
+    font-size: 20px;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
 </style>
 </head>
+
 <body>
 
-<section id="home" class="screen active hero">
-<div class="wrap hero-card">
-  <div class="tara">🧑‍🚀⚡</div>
-  <div class="logo">ARKA PANTARA</div>
-  <div class="subtitle">PETUALANGAN IPAS KELAS 4</div>
-  <p class="tagline">Jelajah • Temukan • Pahami • Taklukkan</p>
-  <p class="muted">Media pembelajaran interaktif untuk TV Digital / PID</p>
-  <button class="btn gold" onclick="showName()">MULAI PETUALANGAN 🚀</button>
-  <div class="credit">Karya &amp; Pengembangan<br><b>TAUPIK_HDT</b><br>SDN JATIKRAMAT VI</div>
-</div>
-</section>
+<div class="container">
 
-<section id="name" class="screen">
-<div class="wrap panel">
-  <h1>👋 Selamat datang, Penjelajah!</h1>
-  <p class="muted">Tulis nama kamu sebelum memulai petualangan.</p>
-  <div class="form">
-    <label for="playerName">Nama Lengkap</label>
-    <input id="playerName" maxlength="40" placeholder="Contoh: Ahmad Fauzan">
-  </div>
-  <div style="text-align:center">
-    <button class="btn gold" onclick="startGame()">MASUK KE PETA 🗺️</button>
-  </div>
-</div>
-</section>
+<h1>ARKA PANTARA</h1>
 
-<section id="map" class="screen">
-<div class="wrap">
-  <div class="topbar">
-    <div><h1 style="margin-bottom:3px">🗺️ PETA ARKA PANTARA</h1><span class="muted" id="welcome"></span></div>
-    <div class="energy">⚡ ENERGI: <span id="energy">0</span></div>
-  </div>
-  <div class="panel">
-    <p class="muted">Selesaikan setiap wilayah. Setiap misi berisi 5 tantangan.</p>
-    <div id="missionGrid" class="map-grid"></div>
-  </div>
-  <div class="footer">ARKA PANTARA • Media Pembelajaran Interaktif IPAS Kelas 4 • TAUPIK_HDT</div>
-</div>
-</section>
+<p>Media Pembelajaran Interaktif IPAS Kelas 4</p>
 
-<section id="brief" class="screen">
-<div class="wrap panel">
-  <div class="topbar"><span class="question-number" id="briefMission"></span><div class="energy">⚡ <span id="energy2">0</span></div></div>
-  <div class="brief">
-    <div class="avatar">🧑‍🚀</div>
-    <div>
-      <h1 id="briefTitle"></h1>
-      <p class="muted" id="briefText"></p>
-      <button class="btn gold" onclick="beginMission()">MULAI MISI 🎯</button>
-      <button class="btn" onclick="showScreen('map')">KEMBALI KE PETA</button>
-    </div>
-  </div>
-</div>
-</section>
+<button onclick="mulai()">MULAI PEMBELAJARAN</button>
 
-<section id="quiz" class="screen">
-<div class="wrap panel">
-  <div class="topbar">
-    <div><span class="question-number" id="quizMission"></span><br><span class="muted" id="quizPlayer"></span></div>
-    <div class="energy">⚡ ENERGI: <span id="energy3">0</span></div>
-  </div>
-  <div class="progress"><span id="progressBar"></span></div>
-  <div class="question-number" id="qNumber"></div>
-  <div class="question" id="questionText"></div>
-  <div id="answers" class="answers"></div>
 </div>
-</section>
-
-<section id="feedback" class="screen">
-<div class="wrap panel feedback">
-  <div class="feedback-icon" id="feedbackIcon"></div>
-  <h2 id="feedbackTitle"></h2>
-  <p class="explain" id="feedbackText"></p>
-  <button id="feedbackBtn" class="btn gold"></button>
-</div>
-</section>
-
-<section id="complete" class="screen">
-<div class="wrap panel feedback">
-  <div class="feedback-icon">🏆</div>
-  <h1>MISI BERHASIL!</h1>
-  <p class="explain" id="completeText"></p>
-  <button class="btn gold" onclick="showScreen('map');renderMap()">KEMBALI KE PETA 🗺️</button>
-</div>
-</section>
-
-<section id="certificate" class="screen">
-<div class="wrap certificate">
-  <div style="font-size:65px">🌎🏆⚡</div>
-  <div class="big-title">MANGKUBUMI</div>
-  <h2>IPAS ARKA PANTARA</h2>
-  <p class="muted">SERTIFIKAT PENYELESAIAN PETUALANGAN</p>
-  <h2 id="certName"></h2>
-  <p class="explain">Telah menyelesaikan 8 misi dan 40 tantangan pembelajaran IPAS Kelas 4.</p>
-  <p><b>Energi terkumpul: <span id="certEnergy"></span></b></p>
-  <p class="credit">Karya &amp; Pengembangan<br><b>TAUPIK_HDT</b><br>SDN JATIKRAMAT VI</p>
-  <button class="btn gold" onclick="window.print()">🖨️ CETAK / SIMPAN SERTIFIKAT</button>
-  <button class="btn" onclick="location.reload()">ULANGI PETUALANGAN</button>
-</div>
-</section>
 
 <script>
-const missions=[
-{title:"Mengubah Bentuk Energi",icon:"⚡",brief:"Cari tahu bagaimana energi berubah dari satu bentuk ke bentuk lain dalam kehidupan sehari-hari.",
-qs:[
-["Perubahan energi yang terjadi pada lampu adalah ...",["listrik → cahaya","cahaya → listrik","gerak → bunyi","panas → gerak"],0,"Lampu menggunakan energi listrik dan menghasilkan cahaya."],
-["Kipas angin mengubah energi listrik menjadi energi ...",["gerak","cahaya","bunyi saja","kimia"],0,"Motor kipas membuat baling-baling bergerak."],
-["Pada setrika listrik, energi listrik berubah terutama menjadi energi ...",["panas","cahaya","gerak","kimia"],0,"Setrika menghasilkan panas untuk merapikan pakaian."],
-["Panel surya mengubah energi cahaya matahari menjadi energi ...",["listrik","bunyi","gerak","panas saja"],0,"Panel surya menangkap cahaya matahari dan mengubahnya menjadi listrik."],
-["Baterai pada senter menyimpan energi ... yang dapat berubah menjadi listrik.",["kimia","bunyi","gerak","cahaya"],0,"Energi kimia dalam baterai digunakan untuk menghasilkan energi listrik."]
-]},
-{title:"Gaya di Sekitar Kita",icon:"💪",brief:"Amati dorongan, tarikan, gesekan, dan pengaruh gaya pada gerak benda.",
-qs:[
-["Gaya yang kita gunakan saat mendorong meja adalah gaya ...",["dorong","tarik","magnet","gravitasi"],0,"Mendorong berarti memberikan gaya dengan arah menjauh dari tubuh."],
-["Saat menarik laci, kita memberikan gaya ...",["tarik","dorong","cahaya","panas"],0,"Menarik berarti memberikan gaya menuju tubuh."],
-["Benda yang jatuh ke tanah dipengaruhi oleh gaya ...",["gravitasi","magnet","pegas","gesek"],0,"Gravitasi bumi menarik benda menuju permukaan bumi."],
-["Sepeda dapat berhenti ketika rem digunakan karena adanya gaya ...",["gesek","cahaya","listrik","magnet"],0,"Gesekan pada rem membantu mengurangi gerak roda."],
-["Magnet dapat menarik benda yang terbuat dari ...",["besi","kayu","kertas","plastik"],0,"Besi termasuk bahan yang dapat ditarik magnet."]
-]},
-{title:"Di Sini Tempat Tinggalku!",icon:"🏠",brief:"Kenali lingkungan tempat tinggal, kondisi alam, serta hubungan manusia dengan lingkungan.",
-qs:[
-["Tempat tinggal manusia dapat berada di daerah ...",["dataran rendah atau tinggi","hanya pegunungan","hanya pantai","hanya kota"],0,"Manusia tinggal di berbagai bentuk wilayah sesuai kondisi lingkungannya."],
-["Contoh kenampakan alam adalah ...",["sungai","jalan raya","jembatan","gedung sekolah"],0,"Sungai terbentuk oleh proses alam."],
-["Daerah pantai banyak dimanfaatkan masyarakat untuk kegiatan ...",["nelayan","perkebunan teh","peternakan sapi perah saja","pertambangan salju"],0,"Masyarakat pantai banyak yang bekerja sebagai nelayan."],
-["Peta dapat membantu kita mengetahui ...",["letak suatu tempat","rasa makanan","suara seseorang","berat badan"],0,"Peta menunjukkan lokasi dan hubungan antarwilayah."],
-["Menjaga kebersihan lingkungan tempat tinggal merupakan tanggung jawab ...",["bersama","satu orang saja","petugas saja","anak-anak saja"],0,"Lingkungan yang bersih perlu dijaga bersama oleh warga."]
-]},
-{title:"Iklim dan Perubahannya",icon:"🌦️",brief:"Pelajari cuaca, iklim, dan tindakan manusia yang dapat membantu menjaga lingkungan.",
-qs:[
-["Keadaan udara pada waktu dan tempat tertentu disebut ...",["cuaca","iklim","musim","suhu tubuh"],0,"Cuaca dapat berubah dalam waktu singkat."],
-["Iklim menggambarkan pola keadaan cuaca dalam waktu ...",["lama","sangat singkat","beberapa menit","sesaat"],0,"Iklim dilihat dari pola cuaca dalam waktu yang panjang."],
-["Salah satu penyebab meningkatnya gas rumah kaca adalah ...",["pembakaran bahan bakar fosil","menanam pohon","berjalan kaki","menghemat listrik"],0,"Pembakaran bahan bakar fosil menghasilkan gas rumah kaca."],
-["Contoh tindakan yang membantu mengurangi penggunaan energi adalah ...",["mematikan lampu saat tidak digunakan","menyalakan semua lampu","membiarkan keran terbuka","membakar sampah"],0,"Mematikan lampu yang tidak diperlukan dapat menghemat energi."],
-["Menanam dan merawat pohon membantu lingkungan karena pohon ...",["menyerap karbon dioksida","menghasilkan asap","membuat sampah","menghabiskan air tanpa manfaat"],0,"Tumbuhan menggunakan karbon dioksida dalam proses fotosintesis."]
-]},
-{title:"Ini Khas Daerahku!",icon:"🎭",brief:"Jelajahi kekayaan daerah melalui makanan, pakaian, kesenian, bahasa, dan tradisi.",
-qs:[
-["Contoh keragaman budaya daerah adalah ...",["tarian tradisional","lampu lalu lintas","komputer","sepeda"],0,"Tarian tradisional merupakan bagian dari budaya daerah."],
-["Makanan khas suatu daerah biasanya menunjukkan ...",["kekayaan budaya","warna langit","jenis kendaraan","arah angin"],0,"Makanan khas merupakan salah satu identitas budaya."],
-["Bahasa daerah sebaiknya kita ...",["hargai dan lestarikan","ejek","lupakan","larang"],0,"Bahasa daerah adalah bagian dari kekayaan budaya."],
-["Sikap terhadap budaya daerah lain adalah ...",["menghargai","merendahkan","mengejek","menghindari semua perbedaan"],0,"Menghargai perbedaan membuat kehidupan bersama lebih rukun."],
-["Kerajinan tradisional dapat menjadi ciri khas karena dibuat dengan ...",["keterampilan dan budaya setempat","mesin yang sama di semua negara","bahan tanpa aturan","cara yang selalu sama"],0,"Kerajinan dapat mencerminkan keterampilan dan budaya masyarakat setempat."]
-]},
-{title:"Peranku di Lingkungan Sekolah dan Masyarakat",icon:"🤝",brief:"Temukan peranmu sebagai anak yang bertanggung jawab di sekolah dan masyarakat.",
-qs:[
-["Contoh tanggung jawab siswa di sekolah adalah ...",["menjaga kebersihan kelas","merusak meja","mengganggu teman","membuang sampah sembarangan"],0,"Menjaga kebersihan adalah tanggung jawab bersama warga kelas."],
-["Saat kerja kelompok, sebaiknya kita ...",["bekerja sama","bekerja sendiri tanpa peduli","menyalahkan teman","menolak tugas"],0,"Kerja sama membantu tugas selesai dengan baik."],
-["Jika melihat sampah di halaman sekolah, tindakan yang tepat adalah ...",["memungut dan membuang pada tempatnya","menendangnya","membiarkannya","menambah sampah"],0,"Membuang sampah pada tempatnya membantu menjaga lingkungan."],
-["Menghormati warga sekolah dapat dilakukan dengan ...",["berbicara sopan","berteriak kepada guru","mengejek teman","mengganggu saat belajar"],0,"Sikap sopan menunjukkan penghargaan kepada orang lain."],
-["Contoh kegiatan yang bermanfaat bagi masyarakat adalah ...",["kerja bakti","merusak fasilitas","membuang sampah ke sungai","membuat keributan"],0,"Kerja bakti dilakukan bersama untuk kepentingan lingkungan."]
-]},
-{title:"Keragaman Budaya dan Kearifan Lokal",icon:"🧭",brief:"Kenali keragaman budaya dan kearifan lokal sebagai kekayaan yang perlu dihargai.",
-qs:[
-["Kearifan lokal adalah pengetahuan atau kebiasaan baik yang ...",["berkembang dalam masyarakat setempat","selalu berasal dari luar negeri","hanya ada di sekolah","tidak berguna"],0,"Kearifan lokal lahir dan berkembang dalam kehidupan masyarakat."],
-["Contoh kearifan lokal dalam menjaga alam adalah ...",["aturan adat menjaga hutan","membuang sampah ke sungai","menebang semua pohon","membakar hutan"],0,"Sebagian masyarakat memiliki aturan adat untuk menjaga alam."],
-["Keragaman budaya Indonesia harus dipandang sebagai ...",["kekayaan bangsa","alasan untuk bertengkar","sesuatu yang memalukan","hal yang harus dihapus"],0,"Perbedaan budaya menjadi kekayaan bangsa Indonesia."],
-["Saat teman memiliki kebiasaan budaya berbeda, kita sebaiknya ...",["menghormatinya","mengejeknya","memaksanya berubah","menjauhinya"],0,"Menghormati perbedaan membantu menciptakan kerukunan."],
-["Pelestarian budaya dapat dilakukan dengan cara ...",["mempelajari dan mengenalkan budaya","mengejek budaya sendiri","melupakan bahasa daerah","merusak benda budaya"],0,"Mempelajari dan mengenalkan budaya membantu menjaga keberlangsungannya."]
-]},
-{title:"Menjadi Pahlawan Lingkungan",icon:"🌎",brief:"Jadilah pahlawan lingkungan melalui kebiasaan kecil yang dilakukan setiap hari.",
-qs:[
-["Sampah organik contohnya adalah ...",["sisa makanan","botol plastik","kaleng","kaca"],0,"Sisa makanan mudah terurai dan termasuk sampah organik."],
-["Salah satu cara mengurangi sampah plastik adalah ...",["membawa botol minum sendiri","menggunakan plastik sekali pakai terus-menerus","membuang plastik ke sungai","membakar semua plastik"],0,"Membawa wadah atau botol pakai ulang mengurangi sampah plastik."],
-["3R terdiri dari Reduce, Reuse, dan ...",["Recycle","Repair","Return","Remove"],0,"Recycle berarti mendaur ulang."],
-["Menghemat air dapat dilakukan dengan ...",["menutup keran setelah digunakan","membiarkan keran terbuka","bermain air terus-menerus","membuang air bersih"],0,"Menutup keran membantu mengurangi pemborosan air."],
-["Contoh aksi pahlawan lingkungan di sekolah adalah ...",["memilah sampah dan menjaga kebersihan","mencoret dinding","merusak tanaman","membuang sampah dari jendela"],0,"Kebiasaan menjaga kebersihan dan memilah sampah merupakan aksi nyata menjaga lingkungan."]
-]}
-];
-
-let player="", energy=0, missionIndex=0, qIndex=0;
-let completed = JSON.parse(localStorage.getItem("arka_completed")||"[]");
-
-function showScreen(id){
- document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
- document.getElementById(id).classList.add("active");
- window.scrollTo(0,0);
-}
-function showName(){showScreen("name");document.getElementById("playerName").focus();}
-function startGame(){
- const n=document.getElementById("playerName").value.trim();
- if(!n){alert("Silakan isi nama terlebih dahulu.");return}
- player=n; energy=0; completed=[]; localStorage.removeItem("arka_completed");
- document.getElementById("welcome").textContent="Penjelajah: "+player;
- renderMap(); showScreen("map");
-}
-function renderMap(){
- const grid=document.getElementById("missionGrid"); grid.innerHTML="";
- missions.forEach((m,i)=>{
-   const unlocked=i===0 || completed.includes(i-1);
-   const done=completed.includes(i);
-   const el=document.createElement("button");
-   el.className="mission"+(unlocked?"":" locked");
-   el.disabled=!unlocked;
-   el.innerHTML=`<div class="badge">${m.icon}</div><b>MISI ${i+1}</b><div>${m.title}</div>
-   <small>${done?"⭐ SUDAH SELESAI":unlocked?"▶ SIAP DIMAINKAN":"🔒 Terkunci"}</small>`;
-   el.onclick=()=>openBrief(i);
-   grid.appendChild(el);
- });
- document.getElementById("energy").textContent=energy;
- document.getElementById("energy2").textContent=energy;
-}
-function openBrief(i){
- missionIndex=i;
- document.getElementById("briefMission").textContent="MISI "+(i+1);
- document.getElementById("briefTitle").textContent=missions[i].title;
- document.getElementById("briefText").textContent=missions[i].brief+" TARA siap menemanimu.";
- showScreen("brief");
-}
-function beginMission(){
- qIndex=0; showQuestion();
-}
-function showQuestion(){
- const m=missions[missionIndex], q=m.qs[qIndex];
- document.getElementById("quizMission").textContent="MISI "+(missionIndex+1)+" • "+m.title;
- document.getElementById("quizPlayer").textContent="Penjelajah: "+player;
- document.getElementById("qNumber").textContent="TANTANGAN "+(qIndex+1)+" DARI 5";
- document.getElementById("questionText").textContent=q[0];
- document.getElementById("progressBar").style.width=((qIndex+1)/5*100)+"%";
- document.getElementById("energy3").textContent=energy;
- const box=document.getElementById("answers"); box.innerHTML="";
- q[1].forEach((a,i)=>{
-   const b=document.createElement("button"); b.className="answer";
-   b.textContent=String.fromCharCode(65+i)+". "+a;
-   b.onclick=()=>answer(i);
-   box.appendChild(b);
- });
- showScreen("quiz");
-}
-function answer(choice){
- const q=missions[missionIndex].qs[qIndex], correct=choice===q[2];
- document.getElementById("feedbackIcon").textContent=correct?"🎉":"💡";
- document.getElementById("feedbackTitle").textContent=correct?"JAWABAN BENAR!":"BELUM TEPAT";
- document.getElementById("feedbackText").textContent=correct?
-   "Hebat, "+player+"! ⚡ Energi TARA bertambah.\n\n"+q[3]:
-   "Jangan menyerah! Petunjuk: "+q[3]+" Coba pilih jawaban yang paling sesuai.";
- const btn=document.getElementById("feedbackBtn");
- btn.className="btn "+(correct?"green":"red");
- if(correct){
-   energy++;
-   document.getElementById("energy3").textContent=energy;
-   btn.textContent=qIndex===4?"SELESAIKAN MISI 🏆":"TANTANGAN BERIKUTNYA ➜";
-   btn.onclick=()=>{ if(qIndex===4) completeMission(); else {qIndex++;showQuestion();} };
- }else{
-   btn.textContent="🔄 COBA LAGI";
-   btn.onclick=showQuestion;
- }
- showScreen("feedback");
-}
-function completeMission(){
- if(!completed.includes(missionIndex)) completed.push(missionIndex);
- localStorage.setItem("arka_completed",JSON.stringify(completed));
- if(completed.length===missions.length){
-   document.getElementById("certName").textContent=player;
-   document.getElementById("certEnergy").textContent=energy+" ⚡";
-   showScreen("certificate");
- }else{
-   document.getElementById("completeText").textContent="Misi "+(missionIndex+1)+" berhasil kamu selesaikan! Energi terkumpul sekarang "+energy+" ⚡. Kembali ke peta untuk membuka petualangan berikutnya.";
-   showScreen("complete");
- }
+function mulai() {
+    alert("Selamat datang di ARKA PANTARA!");
 }
 </script>
+
 </body>
 </html>
